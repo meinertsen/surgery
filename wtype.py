@@ -2,10 +2,10 @@ import types
 import builtins
 
 def wtype(object):
-    test=dir(object)
-    return [b[:2] for b in 
-           [i for j in [[[k.__name__,i,dir(getattr(k,i))]
-              for i in dir(k) if isinstance(getattr(k,i),type)] 
-              for k in set([j for i, j in globals().items() if isinstance(j, types.ModuleType)])] 
-              for i in j] if test == b[2]
+    return [h[:2] for h in 
+           [i for j in [[[mod.__name__,k,dir(getattr(mod,k))]
+              for k in dir(mod) if isinstance(getattr(mod,k),type)] 
+              for mod in set([n for m, n in globals().items() if isinstance(n, types.ModuleType)])] 
+              for i in j] if dir(object) == h[2]
           ]
+wtype(object)
